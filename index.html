@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+	<link rel="stylesheet" href="app.css">
+	<title>Music Snob</title>
+</head>
+<body>
+
+<h1>Music Snob</h1>
+
+<div x-data="musicSnob">
+
+	<div x-show="!loggedIn">
+		<p>
+		The Music Snob tool uses your Spotify listening habits to determine how much of a snob you are - or put more simply, how popular is the music you listen to?
+		The less popular, the more "snobby" you are. Yes, this is very scientific, trust me. To begin, simply authenticate with Spotify by hitting the button
+		below.
+		</p>
+
+		<p>
+		<button @click="login">Login with Spotify</button>
+		</p>
+	</div>
+	<div x-show="loggedIn">
+		
+		<div x-show="profile">
+			<h2>Welcome <span x-text="profile?.display_name"></span></h2>
+			<img :src="profile?.images[0].url">
+		</div>
+
+		<div x-show="topTracks && topArtists" class="row">
+
+			<div class="column column-50">
+			<h3>Top Artists</h3>
+				<template x-for="artist in topArtists">
+					<div>
+					<span x-text="artist.name"></span>
+					<img :src="normalizeImage(artist.images[0].url)">
+					</div>
+				</template>
+			</div>
+
+			<div class="column column-50">
+			<h3>Top Tracks</h3>
+				<template x-for="track in topTracks">
+					<div>
+					<span x-text="track.name"></span> by <span x-text="getArtistForTrack(track.artists)"></span>
+					<img :src="normalizeImage(track.album.images[0].url)">
+					</div>
+				</template>
+			</div>
+
+		</div>
+
+		<div x-show="avgTrackPop && avgArtistPop">
+			<p>
+			For your top musical artists, they had an average popularity score of <span x-text="avgArtistPop"></span>. 
+			For your top tracks, they had an average popularity score of <span x-text="avgTrackPop"></span>. 
+			Spotify ranks popularity from 0 to 100 with 100 being the most popular.
+			</p>
+		</div>
+
+		<div id="statusDiv" x-html="status"></div>
+	</div>
+
+</div>
+
+<br><br><br><a href="/">Start over</a>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
