@@ -1,6 +1,11 @@
+// defaults for dev
+let clientId = "c4f48d760b304e64a3c569941a47c36b";
+let redirectUri = "http://127.0.0.1:8080/";
 
-const clientId = "c4f48d760b304e64a3c569941a47c36b";
-const redirectUri = "http://127.0.0.1:8080/";
+if(window.location.hostname.indexOf('netlify') >= 0) {
+	clientId = '75412937c6ce4352896bc31d8bfe7df8';
+	redirectUri = 'https://musicsnob.netlify.app/';
+}
 
 document.addEventListener('alpine:init', () => {
   Alpine.data('musicSnob', () => ({
