@@ -1,8 +1,3 @@
-/*
-Notes for later: 
-
-Not sure I like localStorage for verifier - reconsider using sessionStorage
-*/
 
 const clientId = "c4f48d760b304e64a3c569941a47c36b";
 const redirectUri = "http://127.0.0.1:8080/";
@@ -140,7 +135,7 @@ document.addEventListener('alpine:init', () => {
 	},
 	async getTopItems(type,token) {
 		console.log('fetching top', type);
-		const result = await fetch(`https://api.spotify.com/v1/me/top/${type}?limit=50`, {
+		const result = await fetch(`https://api.spotify.com/v1/me/top/${type}?limit=20`, {
 			method: "GET", headers: { Authorization: `Bearer ${token}` }
 		});
 
@@ -151,7 +146,8 @@ document.addEventListener('alpine:init', () => {
 		this.redirectToAuthCodeFlow(clientId);
 	},
 	normalizeImage(url) {
-		return `https://res.cloudinary.com/raymondcamden/image/fetch/c_fit,w_100/${url}`;
+//		return `https://res.cloudinary.com/raymondcamden/image/fetch/c_crop,g_north,w_250,h_200/${url}`;
+		return `https://res.cloudinary.com/raymondcamden/image/fetch/c_thumb,g_north,w_250,h_200/${url}`;
 	},
 	async redirectToAuthCodeFlow(clientId) {
 		const verifier = this.generateCodeVerifier(128);

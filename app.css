@@ -1,5 +1,23 @@
 body {
 	padding: 25px;
+	font-family: var(--sl-font-sans);
+	font-weight: var(--sl-font-weight-normal);
+}
+
+h1, h2 {
+    font-family: var(--sl-font-sans);
+	font-weight: var(--sl-font-weight-semibold);
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.itemCard {
+	padding: 15px;
+	width: 250px;
+	height2: 400px;
 }
 
 #statusDiv {
