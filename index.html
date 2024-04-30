@@ -75,6 +75,15 @@
 			For your top tracks, they had an average popularity score of <strong><span x-text="avgTrackPop"></span></strong>. 
 			Spotify ranks popularity from 0 to 100 with 100 being the most popular.
 			</p>
+			<p>
+			<strong>
+				<span x-show="avgAverage < 40">
+				Taken together, you ARE a music snob! Congrats!
+				</span><span x-show="avgAverage >= 40">
+				Taken together, you ARE NOT a music snob. Maybe it's time to broaden your horizons?
+				</span>
+			</strong>
+			</p>
 		</div>
 
 		<div id="statusDiv" x-html="status"></div>

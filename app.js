@@ -18,6 +18,7 @@ document.addEventListener('alpine:init', () => {
 	topTracks:[],
 	avgArtistPop:null,
 	avgTrackPop:null,
+	avgAverage:null,
 	combiner:new Intl.ListFormat('en', { style:'long', type:'conjunction' }), 
 	async init() {
 		console.log('init');
@@ -129,6 +130,8 @@ document.addEventListener('alpine:init', () => {
 		},0)) / 50;
 		console.log('avgTrackPop', this.avgTrackPop);
 
+		this.avgAverage = (this.avgArtistPop + this.avgTrackPop) / 2;
+		
 		this.status = '';
 
 	},
