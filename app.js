@@ -38,7 +38,8 @@ document.addEventListener('alpine:init', () => {
 			if(this.code) {
 				this.loggedIn = true;
 				this.accessToken = await this.getAccessToken(clientId, this.code);
-
+				//remove code from the url
+				window.history.replaceState(null,'', '/');
 				this.getData();
 			}
 		}
@@ -151,7 +152,6 @@ document.addEventListener('alpine:init', () => {
 		this.redirectToAuthCodeFlow(clientId);
 	},
 	normalizeImage(url) {
-//		return `https://res.cloudinary.com/raymondcamden/image/fetch/c_crop,g_north,w_250,h_200/${url}`;
 		return `https://res.cloudinary.com/raymondcamden/image/fetch/c_thumb,g_north,w_250,h_200/${url}`;
 	},
 	async redirectToAuthCodeFlow(clientId) {
