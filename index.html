@@ -50,7 +50,7 @@
 				<template x-for="artist in topArtists">
 					<sl-card class="card-overview itemCard">
 						<img :src="normalizeImage(artist.images[0].url)" slot="image">
-						<strong><span x-text="artist.name"></span></strong>
+						<strong><a :href="artist.external_urls.spotify" target="_new"><span x-text="artist.name"></span></a></strong>
 					</sl-card>
 				</template>
 			</div>
@@ -60,7 +60,7 @@
 				<template x-for="track in topTracks">
 					<sl-card class="card-overview itemCard">
 					<img :src="normalizeImage(track.album.images[0].url)" slot="image">
-					<strong><span x-text="track.name"></span></strong><br>
+					<strong><a :href="track.external_urls.spotify" target="_new"><span x-text="track.name"></span></strong></a><br>
 					<span x-text="getArtistForTrack(track.artists)"></span>
 					</sl-card>
 				</template>
