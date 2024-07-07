@@ -22,3 +22,14 @@ h1, h2 {
 #statusDiv {
 	font-style: italic;
 }
+
+#attributionLogo {
+	position: absolute;
+	top: 25px;
+	right: 100px;
+	text-align: center;
+}
+
+#attributionLogo img {
+	padding-top: 10px;
+}
