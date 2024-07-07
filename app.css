@@ -33,3 +33,7 @@ h1, h2 {
 #attributionLogo img {
 	padding-top: 10px;
 }
+
+#preloginDiv {
+	width: 600px;
+}
